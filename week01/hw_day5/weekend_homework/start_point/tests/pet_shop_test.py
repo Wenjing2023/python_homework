@@ -1,6 +1,8 @@
 import unittest
 from src.pet_shop import *
 
+# import pdb
+
 
 class TestPetShop(unittest.TestCase):
     def setUp(self):
@@ -65,6 +67,8 @@ class TestPetShop(unittest.TestCase):
 
     def test_pet_shop_name(self):
         name = get_pet_shop_name(self.cc_pet_shop)
+        # name is expected to be returned; so we need to retrun
+        # only one (not 2) parameter here: for this function - self.cc_pet_shop
         self.assertEqual("Camelot of Pets", name)
 
     # @unittest.skip("delete this line to run the test")
@@ -75,7 +79,9 @@ class TestPetShop(unittest.TestCase):
     # @unittest.skip("delete this line to run the test")
     def test_add_or_remove_cash__add(self):
         add_or_remove_cash(self.cc_pet_shop, 10)
+        # 2 parameters  here: self.cc_pet_shop and 10; there is no return out
         cash = get_total_cash(self.cc_pet_shop)
+        # call other function
         self.assertEqual(1010, cash)
 
     # @unittest.skip("delete this line to run the test")
@@ -130,11 +136,13 @@ class TestPetShop(unittest.TestCase):
     def test_add_pet_to_stock(self):
         add_pet_to_stock(self.cc_pet_shop, self.new_pet)
         count = get_stock_count(self.cc_pet_shop)
+        # calling get_stock_count function
         self.assertEqual(7, count)
 
-    @unittest.skip("delete this line to run the test")
+    # @unittest.skip("delete this line to run the test")
     def test_customer_cash(self):
         cash = get_customer_cash(self.customers[0])
+        # do not need to specify index, the function will check
         self.assertEqual(1000, cash)
 
     # @unittest.skip("delete this line to run the test")
