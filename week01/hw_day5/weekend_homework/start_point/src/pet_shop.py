@@ -1,15 +1,12 @@
 # WRITE YOUR FUNCTIONS HERE
-# 1. get_pet_shop_name
 def get_pet_shop_name(pet_shop):
     return pet_shop["name"]
 
 
-# 2. get_total_cash
 def get_total_cash(pet_shop):
     return pet_shop["admin"]["total_cash"]
 
 
-# 3. add_or_remove_cash
 def add_or_remove_cash(pet_shop, amount):
     pet_shop["admin"]["total_cash"] += amount
 
@@ -22,17 +19,14 @@ def add_or_remove_cash(pet_shop, amount):
 # then we’re not actually returning anything, but *doing* something.
 
 
-# 4. get_pets_sold
 def get_pets_sold(pet_shop):
     return pet_shop["admin"]["pets_sold"]
 
 
-# 5. increase_pets_sold
 def increase_pets_sold(pet_shop, sold_amount):
     pet_shop["admin"]["pets_sold"] += sold_amount
 
 
-# 6. get_stock_count
 def get_stock_count(pet_shop):
     return len(pet_shop["pets"])
 
@@ -68,7 +62,6 @@ def find_pet_by_name(pet_shop, pet_name):
 #     return None
 
 
-# 9. remove_pet_by_name - Q
 def remove_pet_by_name(pet_shop, name):
     # for pet in pet_shop["pets"]:
     #     if pet["name"] == pet_name:
@@ -83,37 +76,47 @@ def remove_pet_by_name(pet_shop, name):
     # .remove() to remove an item from a list
 
 
-# 10. add_pet_to_stock
 def add_pet_to_stock(pet_shop, pet):
     pet_shop["pets"].append(pet)
 
 
-# 11. get_customer_cash -
 def get_customer_cash(customer):
     return customer["cash"]
 
 
-# do not over complicate things - get a value of a dic within a list: list["key_of_a_dic"]
+# do not over complicate things -
+# get a value of a dic within a list: list["key_of_a_dic"]
 
 
-# 12. remove_customer_cash
 def remove_customer_cash(customer, cash):
     customer["cash"] -= cash
 
 
-# 13. get_customer_pet_count
 def get_customer_pet_count(customer):
-    return customer["pets"]
+    return len(customer["pets"])
 
 
-# 14. add_pet_to_customer
 def add_pet_to_customer(customer, new_pet):
     customer["pets"].append(new_pet)
+    #  Here we do not need to return a value
 
 
-# 15. customer_can_afford_pet
-def customer_can_afford_pet(customer, new_pet):
-    customer_cash = customer["cash"]
-    pet_value = new_pet["price"]
-    if customer_cash >= pet_value:
-        return True
+def customer_can_afford_pet(customer, pet):
+    can_buy_pet = False
+    if customer["cash"] >= pet["price"]:
+        can_buy_pet = True
+        # return can_buy_pet
+    return can_buy_pet
+
+
+# why this works:
+#  return customer["cash"] >= pet["price"]
+
+
+def sell_pet_to_customer(pet_shop, pet, customer):
+    if pet != None and customer_can_afford_pet(customer, pet):
+        remove_pet_by_name(pet_shop, pet["name"])
+        add_pet_to_customer(customer, pet)
+        remove_customer_cash(customer, pet["price"])
+        add_or_remove_cash(pet_shop, pet["price"])
+        # increase_pets_sold(pet_shop, 1)
