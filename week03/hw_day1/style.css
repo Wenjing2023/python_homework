@@ -1,0 +1,26 @@
+.main-hey {
+    background-color: rgb(3 141 244);
+    color: white
+}
+
+article {
+    width: 80%;
+    padding: 25px;
+    border: 100px;
+    justify-content: center;
+    margin-bottom: 1rem;
+    margin: 0 auto;
+}
+
+article>form>div>textarea {
+    border: 2px solid;
+    height: 150px;
+    width: 400px;
+
+}
+
+footer {
+    background-color: rgb(121, 177, 221);
+    text-align: center;
+    color: antiquewhite;
+}
