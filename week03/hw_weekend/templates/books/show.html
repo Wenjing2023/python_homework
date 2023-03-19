@@ -1,0 +1,12 @@
+{% extends "base.html"%} {% block content %}
+<div class="single_book">
+  <h3>Book: {{ book.title }}</h3>
+  <h3>Author: {{ book.author }}</h3>
+  <h3>Genre: {{ book.genre }}</h3>
+  <div class="book-to-detete">
+    <form action="/books/delete/{{index}}" method="post">
+      <input type="submit" value="Delete this Book" />
+    </form>
+  </div>
+</div>
+{% endblock %}

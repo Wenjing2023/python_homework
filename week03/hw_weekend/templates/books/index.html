@@ -1,0 +1,33 @@
+{% extends "base.html"%} {% block content %}
+<div class="book_list">
+  <h2>Books</h2>
+  {% for book in books %}
+  <div>
+    <h3>
+      <a href="/books/{{books.index(book)}}"> {{ book.title }}</a>
+    </h3>
+    <h3>Author: {{ book.author }}</h3>
+    <h3>Genre: {{ book.genre }}</h3>
+
+    <form action="books/{{books.index(book)}}" method="post">
+      <fieldset id="check-status">
+        <input
+          type="radio"
+          name="checked-status"
+          value="{{
+        books.index(book).checked_out }}"
+        />
+        <label for="checked-out">checked out</label>
+        <input
+          type="radio"
+          name="checked-status"
+          value="{{
+        books.index(book).checked_out }}"
+        />
+        <label for="checked-out">checked in</label>
+      </fieldset>
+    </form>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
