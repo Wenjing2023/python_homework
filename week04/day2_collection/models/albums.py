@@ -5,4 +5,5 @@ class Album:
         self.artist = artist
         self.id = id
 
-    
+ # in db albums there is a artist_id cause by clicking the id we can see artist object(id, name); 
+ # here in the class is artist name not id

@@ -38,6 +38,17 @@ def select(id):
     if results:
         result = results[0]
         artist = Artist(result["name"], result["id"])
-        # Q -  instead of  result["id"] can we use id?
+# Q6 -  instead of  result["id"] can we use id?
     return artist     
 
+# Edit Artists
+def update(artist):
+    sql = "UPDATE artists SET name = %s WHERE id = %s"
+    values = [artist.name, artist.id]
+    run_sql(sql, values)
+
+# Delete Artists
+def delete(id):
+    sql = "DELETE FROM artists WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
